@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block Content %}
+<div class="centerstage">
+    {% for post in post_list %}
+    <div class="post card">
+            <div class="card-header text-white bg-dark">
+                <h3><a class="text-light bg-dark" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+            </div>
+            <div class="card-body">
+                <div class="author">
+                    <p>Author: {{ post.author }}</p>
+                </div>
+                <div class="date">
+                    <p>Published on: {{ post.published_date }}</p>
+                </div>
+                <a class ="text-dark" href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }}</a>
+            </div>
+    </div>
+    <br>
+    {% endfor %}
+</div>
+{% endblock %}
